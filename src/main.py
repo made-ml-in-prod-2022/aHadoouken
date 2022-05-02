@@ -5,10 +5,10 @@ import sys
 import json
 from src.models.model_utils import save_model
 
-from utils import read_training_params
-from data import obtain_data, load_data
-from features import DataTransformer
-from models import (
+from src.utils import read_training_params
+from src.data import obtain_data, load_data
+from src.features import DataTransformer
+from src.models import (
     get_model,
     eval_model,
     save_model,
