@@ -1,14 +1,10 @@
-input_data_path: "data/raw/train.csv"
-downloading_params:
-  google_drive_url: "https://drive.google.com/uc?id=1UfkLKJno3m1Hzk8mxlx4oQ9oXlgZj7qR"
-output_model_path: "models/model.pkl"
-metric_path: "models/metrics.json"
-splitting_params:
-  val_size: 0.2
-  random_state: 42
-train_params:
-  model_type: "RandomForestClassifier"
-feature_params:
+data:
+  input_data_path: r"D:\study\TP2021\2_semester\ml_in_prod\aHadoouken\data\raw"
+  downloading_data_params:
+    download_data: True
+    google_drive_url: "https://drive.google.com/uc?id=1UfkLKJno3m1Hzk8mxlx4oQ9oXlgZj7qR"
+  
+preproc:
   categorical_features:
     - "sex"
     - "cp"
@@ -19,3 +15,12 @@ feature_params:
     - "ca"
     - "thal"
   target_col: "condition"
+  splitting_params:
+    test_size: 0.2
+    random_state: 42 
+
+model:
+  output_model_path: "models/model.pkl"
+  metric_path: "models/metrics.json"
+  model_type: "RandomForestClassifier"
+  
