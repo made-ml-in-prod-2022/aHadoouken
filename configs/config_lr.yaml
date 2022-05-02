@@ -1,8 +1,11 @@
 data:
-  input_data_path: r"D:\study\TP2021\2_semester\ml_in_prod\aHadoouken\data\raw"
+  input_data_path: "data/raw/data.csv"
   downloading_data_params:
     download_data: True
     google_drive_url: "https://drive.google.com/uc?id=1UfkLKJno3m1Hzk8mxlx4oQ9oXlgZj7qR"
+  splitting_params:
+    test_size: 0.2
+    random_state: 42 
   
 preproc:
   categorical_features:
@@ -14,13 +17,18 @@ preproc:
     - "slope"
     - "ca"
     - "thal"
+  numerical_features:
+    - "age"
+    - "trestbps"
+    - "chol"
+    - "thalach"
+    - "oldpeak"
   target_col: "condition"
-  splitting_params:
-    test_size: 0.2
-    random_state: 42 
 
 model:
   output_model_path: "models/model.pkl"
   metric_path: "models/metrics.json"
-  model_type: "RandomForestClassifier"
+  model_type: "LogisticRegression"
+  lr_params:
+    random_state: 42
   
