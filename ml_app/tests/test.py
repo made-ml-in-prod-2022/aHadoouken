@@ -14,7 +14,7 @@ class TestML(unittest.TestCase):
         config = os.path.abspath("ml_app/tests/configs/config_lr_test.yaml")
         train_model_pipeline(config)
 
-    def test_training_pipeline_lr(self):
+    def test_training_pipeline_rf(self):
         config = os.path.abspath("ml_app/tests/configs/config_rf_test.yaml")
         train_model_pipeline(config)
 
@@ -52,11 +52,14 @@ class TestML(unittest.TestCase):
             np.array([[1.1, 2, 1], [4.4, 5, 2], [0, 8, 2], [-10, 11, 1]]),
             columns=["num1", "num2", "cat"],
         )
-        ref_arr =  np.array(
-            [[1, 0, 0.35857958, -1.161895],
-            [0, 1, 0.89040547, -0.38729833],
-            [0, 1, 0.18130428, 0.38729833],
-            [1, 0, -1.43028932, 1.161895]])
+        ref_arr = np.array(
+            [
+                [1, 0, 0.35857958, -1.161895],
+                [0, 1, 0.89040547, -0.38729833],
+                [0, 1, 0.18130428, 0.38729833],
+                [1, 0, -1.43028932, 1.161895],
+            ]
+        )
         cat_features = ["cat"]
         num_features = ["num1", "num2"]
         data_transformer = DataTransformer(cat_features, num_features)
