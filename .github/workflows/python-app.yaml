@@ -27,6 +27,8 @@ jobs:
         # start pylint
         python lints/start_pylint.py
     - name: Test with unittest
-      run: coverage run ml_app/tests/test.py
+      run: |
+        pip install -e .
+        coverage run ml_app/tests/test.py
     - name: Tests report
       run: coverage report
