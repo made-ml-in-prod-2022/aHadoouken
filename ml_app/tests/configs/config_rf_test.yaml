@@ -1,5 +1,5 @@
 data:
-  input_data_path: "tests/data/data.csv"
+  input_data_path: "ml_app/tests/data/data.csv"
   downloading_data_params:
     download_data: True
     google_drive_url: "https://drive.google.com/uc?id=1UfkLKJno3m1Hzk8mxlx4oQ9oXlgZj7qR"
@@ -26,9 +26,11 @@ preproc:
   target_col: "condition"
 
 model:
-  output_model_path: "tests/models/model.pkl"
-  metric_path: "tests/models/metrics.json"
-  model_type: "LogisticRegression"
-  lr_params:
+  output_model_path: "ml_app/tests/models/model.pkl"
+  metric_path: "ml_app/tests/models/metrics.json"
+  model_type: "RandomForestClassifier"
+  rf_params:
+    n_estimators: 300
+    max_depth: 6
     random_state: 42
   

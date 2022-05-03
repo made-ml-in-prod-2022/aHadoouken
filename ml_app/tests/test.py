@@ -11,17 +11,17 @@ from ml_app.features import DataTransformer
 
 class TestML(unittest.TestCase):
     def test_training_pipeline_lr(self):
-        config = os.path.abspath("tests/configs/config_lr_test.yaml")
+        config = os.path.abspath("ml_app/tests/configs/config_lr_test.yaml")
         train_model_pipeline(config)
 
     def test_training_pipeline_lr(self):
-        config = os.path.abspath("tests/configs/config_rf_test.yaml")
+        config = os.path.abspath("ml_app/tests/configs/config_rf_test.yaml")
         train_model_pipeline(config)
 
     def test_predict_pipeline(self):
-        model = os.path.abspath("tests/models/model.pkl")
-        data = os.path.abspath("tests/data/data.csv")
-        results = os.path.abspath("tests/data/res.csv")
+        model = os.path.abspath("ml_app/tests/models/model.pkl")
+        data = os.path.abspath("ml_app/tests/data/data.csv")
+        results = os.path.abspath("ml_app/tests/data/res.csv")
         predict_model_pipeline(model, data, results)
 
     def test_data(self):
@@ -32,11 +32,11 @@ class TestML(unittest.TestCase):
             np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]),
             columns=["a", "b", "c"],
         )
-        test_df.to_csv("tests/data/test.csv", index=False)
-        loaded_df = load_data("tests/data/test.csv")
+        test_df.to_csv("ml_app/tests/data/test.csv", index=False)
+        loaded_df = load_data("ml_app/tests/data/test.csv")
         self.assertTrue(np.all(test_df == loaded_df))
         params = DataParams(
-            "tests/data/test.csv",
+            "ml_app/tests/data/test.csv",
             DownloadParams(False, "str"),
             SplittingParams(test_size=0.5),
         )
