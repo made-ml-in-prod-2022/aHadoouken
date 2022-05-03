@@ -1,4 +1,7 @@
+import os
 from pylint.lint import Run
+
+print(os.getcwd())
 
 disable_messages = [
     "missing-module-docstring",
