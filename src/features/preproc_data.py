@@ -1,6 +1,6 @@
+import logging
 import pandas as pd
 import numpy as np
-import logging
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.base import BaseEstimator, TransformerMixin
 

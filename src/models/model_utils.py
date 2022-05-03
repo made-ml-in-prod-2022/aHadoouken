@@ -1,10 +1,11 @@
 import logging
-import pandas as pd
-import numpy as np
 import os
+from typing import Union
 import json
 import pickle
-from typing import Union
+import pandas as pd
+import numpy as np
+
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
@@ -34,6 +35,7 @@ def save_model(model: Pipeline, path: str) -> None:
     with open(model_path, "wb") as file:
         pickle.dump(model, file)
 
+
 def load_model(path: str) -> Pipeline:
     model_path = os.path.abspath(path)
     with open(model_path, "rb") as file:
@@ -56,7 +58,7 @@ def save_metrics(metrics: dict, path: str) -> None:
     with open(metrics_path, "w") as file:
         json.dump(metrics, file, indent=6)
 
+
 def save_predict(predict: np.ndarray, path: str) -> None:
     path = os.path.abspath(path)
     np.savetxt(path, predict)
-

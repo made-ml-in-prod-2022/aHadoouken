@@ -1,8 +1,7 @@
 from dataclasses import dataclass
-from turtle import width
 import logging
-from marshmallow_dataclass import class_schema
 import pprint
+from marshmallow_dataclass import class_schema
 import yaml
 
 from .data_params import DataParams
