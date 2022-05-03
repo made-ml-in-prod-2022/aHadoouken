@@ -14,6 +14,6 @@ disable_messages = [
     "unused-argument"
 ]
 disable_flag = ",".join(disable_messages)
-pylint_opts = ["ML-app", f"--disable={disable_flag}"]
+pylint_opts = ["ml_app", f"--disable={disable_flag}"]
 Run(pylint_opts)
 
