@@ -22,14 +22,11 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lints
       run: |
-        pwd
-        sudo apt-get install tree
-        tree
         # flake8
         flake8 ml_app
         # start pylint
-        python .\lints\start_pylint.py
+        python lints/start_pylint.py
     - name: Test with unittest
-      run: coverage run .\tests\test.py
+      run: coverage run tests/test.py
     - name: Tests report
       run: coverage report
