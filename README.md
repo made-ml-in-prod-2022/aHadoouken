@@ -1,55 +1,86 @@
-ml-proj
+ML project
 ==============================
 
-ML project for HW1
+Выполненная Домашняя работа №1 по курсу "ML в проде"
 
-Project Organization
-------------
+Датасет для обучения модели: https://www.kaggle.com/datasets/cherngs/heart-disease-cleveland-uci
+
+Использование проекта
+==============================
+**Установка:**
+~~~
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+~~~
+
+**Обучение модели:**
+~~~
+python ml_app/main.py --mode=train --config=configs/config_lr.yaml
+~~~
+где
+
+--config - путь к конфиг файлу с параметрами обучения
+
+**Использование модели:**
+~~~
+python ml_app/main.py --mode=predict --model=models/model.pkl --data=data/raw/data.csv --results=data/results/res.csv
+~~~
+где
+
+--model - путь к ".pkl" файлу модели
+
+--data - путь к входным данным
+
+--results - путь к файлу с результатами
+
+**Тестирование модели:**
+~~~
+python ml_app/tests/test.py
+~~~
+
+
+
+Архитектура проекта
+==============================
 
     ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
+    ├── Makefile           
+    ├── README.md          
     ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
+    │   ├── results        <- Папка, содержащая результаты модели
+    │   └── raw            <- Папка для сырых данных для обучения или предсказания
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
+    ├── notebooks          <- Содержит EDA и отчет по данным
     │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    ├── configs            <- Готовые конфиги с параметрами обучения модели
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    ├── lints              <- Содержит скрипт запуска pylint
     │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+    ├── requirements.txt   <- Файл с зависимостями
     │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
+    ├── ml_app             <- Исходный код проекта
+    │   ├── __init__.py    
     │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
+    │   ├── data           <- Скрипт для загрузки данных
+    │   │   └── obtain_data.py
     │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
+    │   ├── features       <- Содержит класс кастомного трансформера
+    │   │   └── preproc_data.py
     │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
+    │   ├── models         <- Скрипт для работы с моделью
+    │   │   └── model_utils.py
     │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
+    │   ├── utils          <- Модуль содержащий DataClass для считываения параметров
+    │   │   ├── data_params.py
+    │   │   ├── model_params.py
+    │   │   └── preproc_params.py
+    │   │
+    │   └── tests          <- Юнит тесты
     │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+    │
+    │
+    └── setup.py            
 
 
 --------
