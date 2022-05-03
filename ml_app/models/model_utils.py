@@ -11,7 +11,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.pipeline import Pipeline
 
-from src.utils import ModelParams
+from ml_app.utils import ModelParams
 
 logger = logging.getLogger(__name__)
 

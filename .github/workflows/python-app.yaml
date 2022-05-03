@@ -26,7 +26,7 @@ jobs:
         sudo apt-get install tree
         tree
         # flake8
-        flake8 src
+        flake8 ML-app
         # start pylint
         python .\lints\start_pylint.py
     - name: Test with unittest

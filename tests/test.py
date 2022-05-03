@@ -3,10 +3,10 @@ import os
 import pandas as pd
 import numpy as np
 
-from src.main import train_model_pipeline, predict_model_pipeline
-from src.data import obtain_data, load_data
-from src.utils import DataParams, DownloadParams, SplittingParams
-from src.features import DataTransformer
+from ml_app.main import train_model_pipeline, predict_model_pipeline
+from ml_app.data import obtain_data, load_data
+from ml_app.utils import DataParams, DownloadParams, SplittingParams
+from ml_app.features import DataTransformer
 
 
 class TestML(unittest.TestCase):

@@ -4,10 +4,10 @@ import json
 import click
 from sklearn.pipeline import Pipeline
 
-from src.utils import read_training_params
-from src.data import obtain_data, load_data
-from src.features import DataTransformer
-from src.models import (
+from ml_app.utils import read_training_params
+from ml_app.data import obtain_data, load_data
+from ml_app.features import DataTransformer
+from ml_app.models import (
     get_model,
     eval_model,
     save_model,

@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
-from src.utils import DataParams
+from ml_app.utils import DataParams
 
 logger = logging.getLogger(__name__)
 
