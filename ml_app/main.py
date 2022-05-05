@@ -28,6 +28,16 @@ logger.addHandler(handler)
 
 
 def train_model_pipeline(config):
+    """Train ML model
+    this method:
+    1. Obtains raw dataset
+    2. Creates model pipeline
+    3. Trains and evaluate pipeline model
+    4. Saves trained model to file
+
+    Keyword arguments:
+    config -- path to config file
+    """
     logger.info(msg="Starting training model pipeline")
     params = read_training_params(config)
 
@@ -62,6 +72,16 @@ def train_model_pipeline(config):
 
 
 def predict_model_pipeline(config):
+    """Predict ML model
+    this method:
+    1. Obtains raw dataset
+    2. Loads pipeline model from file
+    3. Predicts values using loaded pipeline
+    4. Saves results to specified file
+
+    Keyword arguments:
+    config -- path to config file
+    """
     logger.info(msg="Starting predicting model pipeline")
     params = read_predict_params(config)
 

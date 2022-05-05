@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 def get_model(
     params: ModelParams,
 ) -> Union[RandomForestClassifier, LogisticRegression]:
+    """Returns model specified in ModelParams dataclass"""
     if params.model_type == "RandomForestClassifier":
         logger.info(msg="Choosing RandomForest model")
         model = RandomForestClassifier(**params.rf_params.__dict__)
@@ -31,12 +32,14 @@ def get_model(
 
 
 def save_model(model: Pipeline, path: str) -> None:
+    """Saves model to disk"""
     model_path = os.path.abspath(path)
     with open(model_path, "wb") as file:
         pickle.dump(model, file)
 
 
 def load_model(path: str) -> Pipeline:
+    """Loads model from disk"""
     model_path = os.path.abspath(path)
     with open(model_path, "rb") as file:
         model = pickle.load(file)
@@ -48,17 +51,20 @@ def eval_model(
     X_test: pd.DataFrame,
     y_test: pd.Series,
 ) -> dict:
+    """Evaluates classification metrics for the model"""
     y_pred = model.predict(X_test)
     metrics = classification_report(y_test, y_pred, output_dict=True)
     return metrics
 
 
 def save_metrics(metrics: dict, path: str) -> None:
+    """Saves metrics on disk"""
     metrics_path = os.path.abspath(path)
     with open(metrics_path, "w") as file:
         json.dump(metrics, file, indent=6)
 
 
 def save_predict(predict: np.ndarray, path: str) -> None:
+    """Saves predicted results on disk"""
     path = os.path.abspath(path)
     np.savetxt(path, predict)

@@ -12,6 +12,9 @@ logger = logging.getLogger(__name__)
 
 
 def obtain_data(params: DataParams) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """Downloads data file from external source (if it's necessary),
+    loads raw dataset from file to memory
+    and returs splitted dataframe (train/test subsets)"""
     if params.downloading_data_params.download_data:
         download_dataset(params)
 
@@ -25,6 +28,7 @@ def obtain_data(params: DataParams) -> Tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def load_data(data_path: str) -> pd.DataFrame:
+    """Loads data from a file"""
     data_path = os.path.abspath(data_path)
     try:
         dataframe = pd.read_csv(data_path)
@@ -35,6 +39,7 @@ def load_data(data_path: str) -> pd.DataFrame:
 
 
 def download_dataset(params: DataParams) -> None:
+    """Downloads data file from external source"""
     logger.info(msg="Downloading data from Google Drive")
     url = params.downloading_data_params.google_drive_url
     output = os.path.abspath(params.input_data_path)

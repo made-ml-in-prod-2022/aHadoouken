@@ -9,6 +9,12 @@ logger = logging.getLogger(__name__)
 
 
 class DataTransformer(BaseEstimator, TransformerMixin):
+    """Custom transformer for features extraction.
+    Transforms categorical features using one-hot-encoding method.
+    Standardizes numeric features by removing the mean and
+    scaling to unit variance.
+    """
+
     def __init__(self, categorical_features: list, numerical_features: list):
         self.categorical_features = categorical_features
         self.numerical_features = numerical_features
