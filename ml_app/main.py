@@ -86,7 +86,9 @@ def predict_model_pipeline(config):
     params = read_predict_params(config)
 
     model = load_model(params.model_path)
+    logger.debug(msg=f"Model was loaded from {params.model_path}")
     data = load_data(params.data_path)
+    logger.debug(msg=f"Data was loaded from {params.data_path}")
     y_pred = model.predict(data)
     save_predict(y_pred, params.results_path)
     logger.info(msg="Prediction is done!")
