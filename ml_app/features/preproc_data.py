@@ -13,9 +13,13 @@ class DataTransformer(BaseEstimator, TransformerMixin):
         self.categorical_features = categorical_features
         self.numerical_features = numerical_features
         self.enc = OneHotEncoder(handle_unknown="ignore", sparse=False)
+        self.mean = 0
+        self.std = 1
 
     def fit(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
         self.enc.fit(X[self.categorical_features])
+        self.mean = X[self.numerical_features].mean()
+        self.std = X[self.numerical_features].std()
         return self
 
     def transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
@@ -29,7 +33,5 @@ class DataTransformer(BaseEstimator, TransformerMixin):
 
     def transform_num_features(self, X: pd.DataFrame) -> np.ndarray:
         num_features = self.numerical_features
-        X[num_features] = (X[num_features] - X[num_features].mean()) / X[
-            num_features
-        ].std()
+        X[num_features] = (X[num_features] - self.mean) / self.std
         return X[num_features].values
