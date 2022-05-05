@@ -25,15 +25,11 @@ python ml_app/main.py --mode=train --config=configs/config_lr.yaml
 
 **Использование модели:**
 ~~~
-python ml_app/main.py --mode=predict --model=models/model.pkl --data=data/raw/data.csv --results=data/results/res.csv
+python ml_app/main.py --mode=predict --config=configs/config_pred.yaml
 ~~~
 где
 
---model - путь к ".pkl" файлу модели
-
---data - путь к входным данным
-
---results - путь к файлу с результатами
+--config - путь к конфиг файлу с параметрами предсказания
 
 **Тестирование модели:**
 ~~~

@@ -19,10 +19,8 @@ class TestML(unittest.TestCase):
         train_model_pipeline(config)
 
     def test_predict_pipeline(self):
-        model = os.path.abspath("ml_app/tests/models/model.pkl")
-        data = os.path.abspath("ml_app/tests/data/data.csv")
-        results = os.path.abspath("ml_app/tests/data/res.csv")
-        predict_model_pipeline(model, data, results)
+        config = os.path.abspath("ml_app/tests/configs/config_pred.yaml")
+        predict_model_pipeline(config)
 
     def test_data(self):
         with self.assertRaises(IOError):
