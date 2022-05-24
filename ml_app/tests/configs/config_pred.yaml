@@ -1,0 +1,3 @@
+model_path: "ml_app/tests/models/model.pkl"
+data_path: "ml_app/tests/data/data.csv"
+results_path: "ml_app/tests/data/res.csv"
