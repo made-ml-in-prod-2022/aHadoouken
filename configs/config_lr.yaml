@@ -26,8 +26,8 @@ preproc:
   target_col: "condition"
 
 model:
-  output_model_path: "models/model.pkl"
-  metric_path: "models/metrics.json"
+  output_model_path: "models/model_lr.pkl"
+  metric_path: "models/metrics_lr.json"
   model_type: "LogisticRegression"
   lr_params:
     random_state: 42
