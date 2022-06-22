@@ -26,8 +26,8 @@ preproc:
   target_col: "condition"
 
 model:
-  output_model_path: "models/model.pkl"
-  metric_path: "models/metrics.json"
+  output_model_path: "models/model_rf.pkl"
+  metric_path: "models/metrics_rf.json"
   model_type: "RandomForestClassifier"
   rf_params:
     n_estimators: 300
