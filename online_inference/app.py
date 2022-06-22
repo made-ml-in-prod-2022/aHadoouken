@@ -67,10 +67,13 @@ def startup():
 
 
 @app.get("/healz")
-def health():
+def health(response_model=JSONResponse):
     if model_lr is None or model_rf is None:
         raise HTTPException(status_code=503, detail="Models are not ready")
-    return {"Models are ready"}
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content=jsonable_encoder({"status": "models are ready"}),
+    )
 
 
 @app.post("/predict", response_model=ModelResponse)

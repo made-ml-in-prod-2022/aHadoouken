@@ -1,4 +1,3 @@
-from email.policy import default
 import requests
 import click
 import pandas as pd
@@ -7,8 +6,8 @@ import pandas as pd
 @click.command()
 @click.option("--data_path", required=True, type=str, help="path to data")
 @click.option("--model", default="lr", type=str, help="lr/rf")
-@click.option("--host", default="0.0.0.0", help="Host ip")
-@click.option("--port", default=8000, help="Host port")
+@click.option("--host", default="0.0.0.0", type=str, help="Host ip")
+@click.option("--port", default=8000, type=str, help="Host port")
 def main(data_path, model, host, port):
     if model == "lr":
         model_name = "logistic_regression"

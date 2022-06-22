@@ -18,6 +18,7 @@ class InputDataModel(BaseModel):
     features_names: conlist(str, min_items=13, max_items=13)
     model: ModelType = ModelType.lr
 
+
 class ModelResponse(BaseModel):
     predicted_values: List[int]
 
